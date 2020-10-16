@@ -2,13 +2,11 @@ import random
 
 print('''欢迎来到大话中北''')
 
+
 class Creature():
     def __init__(self,hp,name):
         self.hp = hp
         self.name = name
-
-    def name_input(self):
-        name = input(f'请输入{self.name}的名字：')
 
     def attack(self):
         attack_value = random.randint(0,50)
@@ -24,12 +22,10 @@ class Creature():
             return True
 
     def show_status(self):
-        print('{}\'s hp is {}.'.format(name,self.hp))
+        print('{}\'s hp is {}.'.format(self.name,self.hp))
 
-player = Creature(100,'玩家')
-enemy = Creature(80,'敌人')
-player.name_input()
-enemy.name_input()
+player = Creature(100,'boy')
+enemy = Creature(80,'enemy')
 
 while player.not_dead() and enemy.not_dead():
     player.show_status()
@@ -45,8 +41,6 @@ while player.not_dead() and enemy.not_dead():
     elif user_input == 'D':
         enemy_attrarck_value = enemy.attack()
         player.being_attrack(enemy_attrarck_value)
-    else:
-        print('输入错误请重新输入')
 
 if player.not_dead():
     print('You win!')
